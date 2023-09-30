@@ -2,7 +2,22 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const {Shape, Square, Circle, Triangle} = require('./lib/shapes');
-const Logo = require('./examples');
+
+class Svg{
+    constructor(){
+        this.svgText = ''
+        this.svgShape = ''
+    }
+    render(){
+        return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">${this.svgShape}${this.svgText}</svg>`
+    }
+    setLogoText(text, color){
+        this.svgText = `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${color}">${text}</text>`
+    }
+    setLogoShape(shape){
+        this.svgShape = shape.render();
+    }
+}
 
 // questions user answers
 const questions = [
@@ -40,13 +55,18 @@ function createLogo() {
     inquirer
         .prompt(questions)
         .then((data) => {
-            const svg = new Logo();
-            svg.setText(data.text, data.textColor);
-            const shape = new eval(data.shape)();
+            const svg = new Svg();
+            svg.setLogoText(data.text, data.textColor);
+            const shapeMap = {
+                Circle: Circle,
+                Square: Square,
+                Triangle: Triangle,
+            };
+            const shape = new shapeMap[data.shape]();
             shape.setColor(data.shapeColor);
-            svg.setShape(shape);
-            writeToFile('logo.svg', svg.render());
-        })        
-};
+            svg.setLogoShape(shape);
+            writeToFile('./lib/logo.svg', svg.render());
+        });
+}
 
 createLogo();
