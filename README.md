@@ -3,7 +3,7 @@
 
   # SVG Logo Generator
 
-  [Link to video displaying Logo Generator] (https://drive.google.com/file/d/191gkeZEL6oxuePCfkTtKBNzOO3xl5N5K/view)
+  [Link to video displaying Logo Generator](https://drive.google.com/file/d/191gkeZEL6oxuePCfkTtKBNzOO3xl5N5K/view)
 
   ## Table of Contents
   * [Description](#description)
