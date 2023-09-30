@@ -46,3 +46,13 @@ function writeToFile(fileName, data) {
         console.log(`Generated logo.svg!`);
         })
 };
+
+function init() {
+    inquirer
+        .prompt(questions)
+        .then((data) => {
+            writeToFile('examples', data)
+        })
+};
+
+init();
