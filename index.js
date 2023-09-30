@@ -1,7 +1,8 @@
 // dependencies
 const fs = require('fs');
-const inquirer = require('inquirer')
+const inquirer = require('inquirer');
 const {Shape, Square, Circle, Triangle} = require('./lib/shapes');
+const Logo = require('./examples');
 
 // questions user answers
 const questions = [
@@ -39,14 +40,13 @@ function createLogo() {
     inquirer
         .prompt(questions)
         .then((data) => {
-            const svg = new logo();
-            svg.setText(data.logoText, data.logoTextColor)
-            const shape = eval(`new ${data.logoShape}()`)
-            shape.setColor(data.logoShapeColor)
-            svg.setShape(shape)
-            writeToFile('', svg.render())
-        })
-        
+            const svg = new Logo();
+            svg.setText(data.text, data.textColor);
+            const shape = new eval(data.shape)();
+            shape.setColor(data.shapeColor);
+            svg.setShape(shape);
+            writeToFile('logo.svg', svg.render());
+        })        
 };
 
 createLogo();
