@@ -23,12 +23,6 @@
   ## Usage
   Start with the input "node index.js" in your terminal. Then follow the promts and input your data for the questions. After that is complete, a logo will generate in the lib/logo.svg file. Open this using your browser and view your logo!
 
-  ## Contributions
-  N/A
-
-  ## Tests
-  N/A
-
   ## License
   [MIT](https://choosealicense.com/licenses/mit/)
   
